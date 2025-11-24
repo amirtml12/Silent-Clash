@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AI_Button
+  - Create_Button
+  - Join_Button
+  - Settings_Button
+  - Exit_Button
   layers:
   - Default
   - TransparentFX

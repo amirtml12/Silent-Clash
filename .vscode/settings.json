@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Silent Clash.sln"
+    "dotnet.defaultSolution": "Silent-Clash.sln"
 }

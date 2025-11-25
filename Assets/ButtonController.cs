@@ -6,6 +6,9 @@ public class ButtonController : MonoBehaviour
 {
     public GameObject Setting_Menu;
     public GameObject Main_Menu;
+    public GameObject HostLobby;
+    public GameObject JoinLobby;
+    
     void Start()
     {
 
@@ -24,15 +27,19 @@ public class ButtonController : MonoBehaviour
 
     public void CreateGroup()
     {
+        Main_Menu.SetActive(false);
+        HostLobby.SetActive(true);
 
 
     }
 
     public void JoinGroup()
     {
-
+        Main_Menu.SetActive(false);
+        JoinLobby.SetActive(true);
     }
 
+    
     public void OpenSettings()
     {
         Main_Menu.SetActive(false);
@@ -48,8 +55,25 @@ public class ButtonController : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        Setting_Menu.SetActive(false);
-        Main_Menu.SetActive(true);
+
+        if (gameObject.transform.parent.gameObject.name == "HostLobby")
+        {
+            HostLobby.SetActive(false);
+            Main_Menu.SetActive(true);
+        }
+        else if (gameObject.transform.parent.gameObject.name == "JoinLobby")
+        {
+            JoinLobby.SetActive(false);
+            Main_Menu.SetActive(true);
+        }
+
+        else
+        {
+            Setting_Menu.SetActive(false);
+            Main_Menu.SetActive(true);
+        }
+
+    
     }
 
     public void GraphicsSettings()

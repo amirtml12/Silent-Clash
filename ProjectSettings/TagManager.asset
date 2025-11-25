@@ -9,6 +9,9 @@ TagManager:
   - Join_Button
   - Settings_Button
   - Exit_Button
+  - HostLobby
+  - JoinLobby
+  - SettingsMenu
   layers:
   - Default
   - TransparentFX

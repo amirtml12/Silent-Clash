@@ -12,6 +12,7 @@ TagManager:
   - HostLobby
   - JoinLobby
   - SettingsMenu
+  - inputPanel
   layers:
   - Default
   - TransparentFX

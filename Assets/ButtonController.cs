@@ -1,94 +1,98 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ButtonController : MonoBehaviour
+namespace SilentClash
 {
-    public GameObject Setting_Menu;
-    public GameObject Main_Menu;
-    public GameObject HostLobby;
-    public GameObject JoinLobby;
-    
-    void Start()
+
+
+    public class ButtonController : MonoBehaviour
     {
+        public GameObject Setting_Menu;
+        public GameObject Main_Menu;
+        public GameObject HostLobby;
+        public GameObject JoinLobby;
+        public GameObject inputPanel;
 
-    }
+      
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void PlayWithAI()
-    {
-
-    }
-
-    public void CreateGroup()
-    {
-        Main_Menu.SetActive(false);
-        HostLobby.SetActive(true);
-
-
-    }
-
-    public void JoinGroup()
-    {
-        Main_Menu.SetActive(false);
-        JoinLobby.SetActive(true);
-    }
-
-    
-    public void OpenSettings()
-    {
-        Main_Menu.SetActive(false);
-        Setting_Menu.SetActive(true);
-    }
-
-
-
-    public void Exit()
-    {
-        Application.Quit();
-    }
-
-    public void BackToMainMenu()
-    {
-
-        if (gameObject.transform.parent.gameObject.name == "HostLobby")
+        public void PlayWithAI()
         {
-            HostLobby.SetActive(false);
-            Main_Menu.SetActive(true);
-        }
-        else if (gameObject.transform.parent.gameObject.name == "JoinLobby")
-        {
-            JoinLobby.SetActive(false);
-            Main_Menu.SetActive(true);
+
         }
 
-        else
+        public void CreateGroup()
         {
-            Setting_Menu.SetActive(false);
-            Main_Menu.SetActive(true);
+            Main_Menu.SetActive(false);
+            HostLobby.SetActive(true);
+            NetworkManager.Instance.StartHost();
+
+
         }
 
-    
-    }
+        public void JoinGroup()
+        {
+            Main_Menu.SetActive(false);
+            inputPanel.SetActive(true);
+            NetworkManager.Instance.ConnectToServer("127.0.0.1", "7777", "Player2");
+        }
 
-    public void GraphicsSettings()
-    {
 
-    }
+        public void OpenSettings()
+        {
+            Main_Menu.SetActive(false);
+            Setting_Menu.SetActive(true);
+        }
 
-    public void AudioSettings()
-    {
 
-    }
 
-    public void UISettings()
-    {
-        // Open UI settings menu
+        public void Exit()
+        {
+            Application.Quit();
+        }
 
+        public void BackToMainMenu()
+        {
+
+            if (gameObject.transform.parent.gameObject.tag == "HostLobby")
+            {
+                HostLobby.SetActive(false);
+                Main_Menu.SetActive(true);
+            }
+            else if (gameObject.transform.parent.gameObject.tag == "JoinLobby")
+            {
+                JoinLobby.SetActive(false);
+                Main_Menu.SetActive(true);
+            }
+            else if (gameObject.transform.parent.gameObject.tag == "inputPanel")
+            {
+                inputPanel.SetActive(false);
+                Main_Menu.SetActive(true);
+            }
+
+
+            else
+            {
+                Setting_Menu.SetActive(false);
+                Main_Menu.SetActive(true);
+            }
+
+
+        }
+        
+        public void GraphicsSettings()
+        {
+
+        }
+
+        public void AudioSettings()
+        {
+
+        }
+
+        public void UISettings()
+        {
+            // Open UI settings menu
+
+        }
     }
 }

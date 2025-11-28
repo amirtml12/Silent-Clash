@@ -969,7 +969,6 @@ GameObject:
   m_Component:
   - component: {fileID: 440773129}
   - component: {fileID: 440773128}
-  - component: {fileID: 440773130}
   m_Layer: 5
   m_Name: ButtonsController
   m_TagString: Untagged
@@ -986,7 +985,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 440773127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba99fcdf3a5446b4c871ff457a26a472, type: 3}
+  m_Script: {fileID: 11500000, guid: f0f762917a62ea340800bb8716885afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Setting_Menu: {fileID: 122195985}
@@ -1013,18 +1012,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &440773130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440773127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2ad27d4b7c6584ea187a4905c6ddfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &504146157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,7 +1974,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 883402096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba99fcdf3a5446b4c871ff457a26a472, type: 3}
+  m_Script: {fileID: 11500000, guid: f0f762917a62ea340800bb8716885afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Setting_Menu: {fileID: 122195985}
@@ -3133,7 +3120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165288710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba99fcdf3a5446b4c871ff457a26a472, type: 3}
+  m_Script: {fileID: 11500000, guid: f0f762917a62ea340800bb8716885afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Setting_Menu: {fileID: 122195985}
@@ -4195,7 +4182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653307097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba99fcdf3a5446b4c871ff457a26a472, type: 3}
+  m_Script: {fileID: 11500000, guid: f0f762917a62ea340800bb8716885afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Setting_Menu: {fileID: 122195985}

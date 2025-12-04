@@ -5,7 +5,7 @@ public class JoinPanelUI : MonoBehaviour
 {
     public TMP_InputField usernameInput;
     public TMP_InputField ipAddressInput;
-    public NetworkManager networkManager; 
+    public NetworkConnectionManager networkManager; 
 
     public void OnJoinButtonClicked()
     {
@@ -20,7 +20,7 @@ public class JoinPanelUI : MonoBehaviour
         }
 
         
-        networkManager.ConnectToServer(ipAddress, NetworkManager.DefaultPort.ToString(), username); 
+      
         
         
         gameObject.SetActive(false);

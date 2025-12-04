@@ -13,11 +13,13 @@ TagManager:
   - JoinLobby
   - SettingsMenu
   - inputPanel
+  - Gnd
+  - ladder
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

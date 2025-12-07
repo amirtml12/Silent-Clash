@@ -15,8 +15,8 @@ namespace SilentClash
         public GameObject HostLobby;
         public GameObject JoinLobby;
         public GameObject inputPanel;
-        public TMP_InputField usernameInput;
-        public TMP_InputField ipAddressInput;
+        public TMP_InputField UserNameInput;
+        public TMP_InputField ipInput;
 
 
 
@@ -35,6 +35,12 @@ namespace SilentClash
 
         }
 
+        public void StartGame()
+        {
+            NetworkConnectionManager.Instance.StartGame();
+
+        }
+
         public void OpenJoinPanel()
         {          
             Main_Menu.SetActive(false);
@@ -43,12 +49,19 @@ namespace SilentClash
 
         public void JoinGroup()
         {
-            string ip = ipAddressInput.text;
-            PlayerInfo.LocalPlayerName = usernameInput.text;
-            NetworkConnectionManager.Instance.StartClient(ip);
-            Main_Menu.SetActive(false);
-            inputPanel.SetActive(false);
-            JoinLobby.SetActive(true);
+            
+            PlayerJoinInfo.PlayerName = UserNameInput.text;
+            NetworkConnectionManager.Instance.StartClient(ipInput.text);
+            if(!string.IsNullOrEmpty(UserNameInput.text) || !string.IsNullOrEmpty(ipInput.text))
+            {
+                Main_Menu.SetActive(false);
+                inputPanel.SetActive(false);
+                JoinLobby.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Please enter valid UserName and IP Address");
+            }
             
         }
 

@@ -10,6 +10,7 @@ namespace SilentClash
 
     public class ButtonController : MonoBehaviour
     {
+        public static ButtonController Instance;
         public GameObject Main_Menu;
         public GameObject Setting_Menu;
         public GameObject HostLobby;
@@ -17,6 +18,15 @@ namespace SilentClash
         public GameObject inputPanel;
         public TMP_InputField UserNameInput;
         public TMP_InputField ipInput;
+
+
+        void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        }
 
 
 
@@ -92,7 +102,7 @@ namespace SilentClash
             {
                 JoinLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-                NetworkConnectionManager.Instance.StopHost();
+                NetworkConnectionManager.Instance.DisconnectClient();
             }
             else if (gameObject.transform.parent.gameObject.tag == "inputPanel")
             {

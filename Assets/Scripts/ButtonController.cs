@@ -38,16 +38,17 @@ namespace SilentClash
 
         public void CreateGroup()
         {
+            MirrorNetworkManager.Instance.StartHost();
             Main_Menu.SetActive(false);
             HostLobby.SetActive(true);
-            NetworkConnectionManager.Instance.StartHost();
+           
 
 
         }
 
         public void StartGame()
         {
-            NetworkConnectionManager.Instance.StartGame();
+           MirrorNetworkManager.Instance.StartGame();
 
         }
 
@@ -59,19 +60,13 @@ namespace SilentClash
 
         public void JoinGroup()
         {
+            MirrorNetworkManager.Instance.StartClient(ipInput.text);
+            Main_Menu.SetActive(false);
+            inputPanel.SetActive(false);
+            JoinLobby.SetActive(true);
             
-            PlayerJoinInfo.PlayerName = UserNameInput.text;
-            NetworkConnectionManager.Instance.StartClient(ipInput.text);
-            if(!string.IsNullOrEmpty(UserNameInput.text) || !string.IsNullOrEmpty(ipInput.text))
-            {
-                Main_Menu.SetActive(false);
-                inputPanel.SetActive(false);
-                JoinLobby.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Please enter valid UserName and IP Address");
-            }
+            
+
             
         }
 
@@ -96,13 +91,13 @@ namespace SilentClash
             {
                 HostLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-                NetworkConnectionManager.Instance.StopHost();
+                
             }
             else if (gameObject.transform.parent.gameObject.tag == "JoinLobby")
             {
                 JoinLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-                NetworkConnectionManager.Instance.DisconnectClient();
+              
             }
             else if (gameObject.transform.parent.gameObject.tag == "inputPanel")
             {

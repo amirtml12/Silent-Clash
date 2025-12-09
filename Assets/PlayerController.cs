@@ -1,9 +1,10 @@
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public int MoveSpeed;
     public float climbSpeed = 3f;   
@@ -27,10 +28,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!isLocalPlayer) 
+        {
+            return;
+        }
         MoveX = Mathf.RoundToInt(joystick.Horizontal);
         MoveY = Mathf.RoundToInt(joystick.Vertical);
 
-        // اگر نزدیک نردبان هستیم و کاربر joystick را بالا یا پایین میگیرد
+       
         if (isNearLadder && Mathf.Abs(MoveY) > 0.3f)
         {
             StartClimbing();
@@ -60,9 +65,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // ======================
-    //   حالت حرکت عادی
-    // ======================
+
     void Move()
     {
         rb.gravityScale = 3f;

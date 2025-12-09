@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35388b78e6b82b142ad03a4544dd8cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
+  manager: {fileID: 2129589363}
 --- !u!4 &139652241
 Transform:
   m_ObjectHideFlags: 0
@@ -6149,7 +6149,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   runInBackground: 1
   headlessStartMode: 0
-  editorAutoStart: 0
+  editorAutoStart: 1
   sendRate: 60
   offlineScene: 
   onlineScene: 

@@ -20,6 +20,7 @@ public class NetworkUIManager : MonoBehaviour
         manager.networkAddress = ipAddress;
         manager.StartClient();
     }
+    
 
     public void StopClient()
     {

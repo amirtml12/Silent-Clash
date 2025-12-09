@@ -11,6 +11,14 @@ public class CustomNetworkManager : NetworkManager
         base.OnStartServer();
 
     }
+    public override void OnClientConnect()
+{
+    base.OnClientConnect();
+
+    // کلاینت آماده است و می‌تواند صحنه سرور را دنبال کند
+    NetworkClient.Ready(); // اطمینان از آماده بودن
+}
+
 
     public override void OnServerSceneChanged(string sceneName)
     {

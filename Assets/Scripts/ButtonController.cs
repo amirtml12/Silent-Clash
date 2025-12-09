@@ -6,8 +6,6 @@ using TMPro;
 namespace SilentClash
 
 {
-
-
     public class ButtonController : MonoBehaviour
     {
         public static ButtonController Instance;
@@ -19,7 +17,6 @@ namespace SilentClash
         public TMP_InputField UserNameInput;
         public TMP_InputField ipInput;
 
-
         void Awake()
         {
             if (Instance == null)
@@ -28,12 +25,8 @@ namespace SilentClash
             }
         }
 
-
-
-
         public void PlayWithAI()
         {
-
         }
 
         public void CreateGroup()
@@ -41,23 +34,26 @@ namespace SilentClash
             Mirror.NetworkManager.singleton.StartHost();
             Main_Menu.SetActive(false);
             HostLobby.SetActive(true);
-
-
-
         }
 
         public void StartGame()
         {
-            if (Mirror.NetworkServer.active)
+            if (
+                Mirror.NetworkServer.active)
             {
+                foreach (var conn in Mirror.NetworkServer.connections)
+                {
+                    if (!conn.Value.isReady)
+                        Mirror.NetworkServer.SetClientReady(conn.Value); 
+                }
+
                 Mirror.NetworkManager.singleton.ServerChangeScene("Game");
             }
-
         }
 
         public void OpenJoinPanel()
         {
-            Mirror.NetworkManager.singleton.StartHost();
+           
             Main_Menu.SetActive(false);
             inputPanel.SetActive(true);
         }
@@ -70,26 +66,18 @@ namespace SilentClash
             Mirror.NetworkManager.singleton.networkAddress = ip;
             Mirror.NetworkManager.singleton.StartClient();
 
-
-            Mirror.NetworkClient.connection.identity.GetComponent<PlayerLobby>().CmdAddPlayerName(playerName);
+            //Mirror.NetworkClient.connection.identity.GetComponent<PlayerLobby>().CmdAddPlayerName(playerName);
 
             Main_Menu.SetActive(false);
             inputPanel.SetActive(false);
             JoinLobby.SetActive(true);
-
-
-
-
         }
-
 
         public void OpenSettings()
         {
             Main_Menu.SetActive(false);
             Setting_Menu.SetActive(true);
         }
-
-
 
         public void Exit()
         {
@@ -98,56 +86,45 @@ namespace SilentClash
 
         public void BackToMainMenu()
         {
-
             if (gameObject.transform.parent.gameObject.tag == "HostLobby")
             {
                 if (Mirror.NetworkServer.active)
                     Mirror.NetworkManager.singleton.StopHost();
                 HostLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-
             }
             else if (gameObject.transform.parent.gameObject.tag == "JoinLobby")
             {
                 if (Mirror.NetworkClient.isConnected)
                     Mirror.NetworkManager.singleton.StopClient();
 
-
                 JoinLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-
             }
             else if (gameObject.transform.parent.gameObject.tag == "inputPanel")
             {
-
                 inputPanel.SetActive(false);
                 Main_Menu.SetActive(true);
             }
-
 
             else
             {
                 Setting_Menu.SetActive(false);
                 Main_Menu.SetActive(true);
             }
-
-
         }
 
         public void GraphicsSettings()
         {
-
         }
 
         public void AudioSettings()
         {
-
         }
 
         public void UISettings()
         {
             // Open UI settings menu
-
         }
     }
 }

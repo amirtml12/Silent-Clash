@@ -15,6 +15,7 @@ public class PlayerController : NetworkBehaviour
 
     int MoveX;
     float MoveY;
+    private float scaleX = 1f;
 
     public bool isGround;
     public bool isNearLadder = false;

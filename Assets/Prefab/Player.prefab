@@ -465,6 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4823bb88c505e7144aac1132665f8fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   MoveSpeed: 5
   climbSpeed: 3
   joystick: {fileID: 1042996114750429232}

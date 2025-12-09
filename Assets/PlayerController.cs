@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : NetworkBehaviour
 {
     public int MoveSpeed;
-    public float climbSpeed = 3f;   
+    public float climbSpeed = 3f;
     public Joystick joystick;
 
     Animator animator;
@@ -17,8 +17,8 @@ public class PlayerController : NetworkBehaviour
     float MoveY;
 
     public bool isGround;
-    public bool isNearLadder = false;   
-    public bool isClimbing = false;     
+    public bool isNearLadder = false;
+    public bool isClimbing = false;
 
     void Start()
     {
@@ -28,32 +28,32 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        if (!isLocalPlayer) 
+        if (!isLocalPlayer)
         {
             return;
         }
         MoveX = Mathf.RoundToInt(joystick.Horizontal);
         MoveY = Mathf.RoundToInt(joystick.Vertical);
 
-       
+
         if (isNearLadder && Mathf.Abs(MoveY) > 0.3f)
         {
             StartClimbing();
         }
-        
+
         else if (isClimbing && Mathf.Abs(MoveY) == 0)
         {
-            
+
             rb.velocity = Vector2.zero;
-            animator.SetInteger("PlayerMode", 3); 
+            animator.SetInteger("PlayerMode", 3);
         }
         else if (isClimbing && !isNearLadder)
         {
-            
+
             StopClimbing();
         }
 
-        
+
         if (!isClimbing)
         {
             Move();
@@ -101,7 +101,7 @@ public class PlayerController : NetworkBehaviour
     {
         isClimbing = true;
         rb.gravityScale = 0;
-        rb.velocity = new Vector2(0, 0); 
+        rb.velocity = new Vector2(0, 0);
     }
 
     // ======================
@@ -109,7 +109,7 @@ public class PlayerController : NetworkBehaviour
     // ======================
     void LadderMovement()
     {
-        
+
 
         if (Mathf.Abs(MoveY) > 0.1f)
         {
@@ -117,12 +117,12 @@ public class PlayerController : NetworkBehaviour
             animator.SetInteger("PlayerMode", 2); // انیمیشن بالا رفتن
         }
 
-        else if(Mathf.Abs(MoveY) < -0.1f)
+        else if (Mathf.Abs(MoveY) < -0.1f)
         {
             rb.velocity = new Vector2(0, MoveY * -climbSpeed);
-            animator.SetInteger("PlayerMode", 2); 
+            animator.SetInteger("PlayerMode", 2);
         }
-       
+
     }
 
 
@@ -166,7 +166,7 @@ public class PlayerController : NetworkBehaviour
         {
             isGround = true;
             isClimbing = false;
-            
+
         }
     }
 

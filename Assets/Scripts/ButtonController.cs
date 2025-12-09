@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  
-using TMPro; 
+using UnityEngine.UI;
+using TMPro;
 namespace SilentClash
 
 {
@@ -38,36 +38,48 @@ namespace SilentClash
 
         public void CreateGroup()
         {
-            MirrorNetworkManager.Instance.StartHost();
+            Mirror.NetworkManager.singleton.StartHost();
             Main_Menu.SetActive(false);
             HostLobby.SetActive(true);
-           
+
 
 
         }
 
         public void StartGame()
         {
-           MirrorNetworkManager.Instance.StartGame();
+            if (Mirror.NetworkServer.active)
+            {
+                Mirror.NetworkManager.singleton.ServerChangeScene("Game");
+            }
 
         }
 
         public void OpenJoinPanel()
-        {          
+        {
+            Mirror.NetworkManager.singleton.StartHost();
             Main_Menu.SetActive(false);
             inputPanel.SetActive(true);
         }
 
         public void JoinGroup()
         {
-            MirrorNetworkManager.Instance.StartClient(ipInput.text);
+            string ip = ipInput.text;
+            string playerName = UserNameInput.text;
+
+            Mirror.NetworkManager.singleton.networkAddress = ip;
+            Mirror.NetworkManager.singleton.StartClient();
+
+
+            Mirror.NetworkClient.connection.identity.GetComponent<PlayerLobby>().CmdAddPlayerName(playerName);
+
             Main_Menu.SetActive(false);
             inputPanel.SetActive(false);
             JoinLobby.SetActive(true);
-            
-            
 
-            
+
+
+
         }
 
 
@@ -89,18 +101,25 @@ namespace SilentClash
 
             if (gameObject.transform.parent.gameObject.tag == "HostLobby")
             {
+                if (Mirror.NetworkServer.active)
+                    Mirror.NetworkManager.singleton.StopHost();
                 HostLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-                
+
             }
             else if (gameObject.transform.parent.gameObject.tag == "JoinLobby")
             {
+                if (Mirror.NetworkClient.isConnected)
+                    Mirror.NetworkManager.singleton.StopClient();
+
+
                 JoinLobby.SetActive(false);
                 Main_Menu.SetActive(true);
-              
+
             }
             else if (gameObject.transform.parent.gameObject.tag == "inputPanel")
             {
+
                 inputPanel.SetActive(false);
                 Main_Menu.SetActive(true);
             }
@@ -114,7 +133,7 @@ namespace SilentClash
 
 
         }
-        
+
         public void GraphicsSettings()
         {
 

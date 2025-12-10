@@ -15,6 +15,7 @@ TagManager:
   - inputPanel
   - Gnd
   - ladder
+  - Joystick
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,10 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 3156213691
+    locked: 0
+  - name: Hand
+    uniqueID: 3429146699
+    locked: 0
+  - name: bullet
+    uniqueID: 3388639729
     locked: 0

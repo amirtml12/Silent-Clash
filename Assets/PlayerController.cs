@@ -1,10 +1,10 @@
-using Mirror;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
     public int MoveSpeed;
     public float climbSpeed = 3f;
@@ -23,16 +23,18 @@ public class PlayerController : NetworkBehaviour
 
     void Start()
     {
+ 
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
     }
+   
 
     void Update()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
+        
+        joystick = FindObjectOfType<Joystick>();
         MoveX = Mathf.RoundToInt(joystick.Horizontal);
         MoveY = Mathf.RoundToInt(joystick.Vertical);
 
@@ -95,9 +97,7 @@ public class PlayerController : NetworkBehaviour
 
 
 
-    // ======================
-    //   فعال‌سازی حالت نردبان
-    // ======================
+  
     void StartClimbing()
     {
         isClimbing = true;

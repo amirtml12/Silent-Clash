@@ -44,7 +44,7 @@ namespace SilentClash
                 foreach (var conn in Mirror.NetworkServer.connections)
                 {
                     if (!conn.Value.isReady)
-                        Mirror.NetworkServer.SetClientReady(conn.Value); 
+                        Mirror.NetworkServer.SetClientReady(conn.Value);
                 }
 
                 Mirror.NetworkManager.singleton.ServerChangeScene("Game");
@@ -53,7 +53,7 @@ namespace SilentClash
 
         public void OpenJoinPanel()
         {
-           
+
             Main_Menu.SetActive(false);
             inputPanel.SetActive(true);
         }
@@ -62,11 +62,11 @@ namespace SilentClash
         {
             string ip = ipInput.text;
             string playerName = UserNameInput.text;
-
+           
             Mirror.NetworkManager.singleton.networkAddress = ip;
             Mirror.NetworkManager.singleton.StartClient();
 
-            //Mirror.NetworkClient.connection.identity.GetComponent<PlayerLobby>().CmdAddPlayerName(playerName);
+            
 
             Main_Menu.SetActive(false);
             inputPanel.SetActive(false);

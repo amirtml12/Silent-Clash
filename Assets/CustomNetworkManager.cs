@@ -15,8 +15,7 @@ public class CustomNetworkManager : NetworkManager
 {
     base.OnClientConnect();
 
-    // کلاینت آماده است و می‌تواند صحنه سرور را دنبال کند
-    NetworkClient.Ready(); // اطمینان از آماده بودن
+
 }
 
 

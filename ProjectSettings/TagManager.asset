@@ -15,7 +15,8 @@ TagManager:
   - inputPanel
   - Gnd
   - ladder
-  - Joystick
+  - MoveJoy
+  - AimJoy
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Gun
   - 
   - 
   - 

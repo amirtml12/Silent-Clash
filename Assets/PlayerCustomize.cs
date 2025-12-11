@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCustomize : MonoBehaviour
 {
+    public static PlayerCustomize instance;
     public GameObject HandColt;
     public GameObject HandUzi;
     public GameObject HandShotgun;
@@ -16,9 +17,12 @@ public class PlayerCustomize : MonoBehaviour
     public RuntimeAnimatorController animatorWithGun;
     public RuntimeAnimatorController animatorWithoutGun;
 
-    void Start()
+    void Awake()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +53,8 @@ public class PlayerCustomize : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = PlayerWGun;
             animator.runtimeAnimatorController = animatorWithGun;
             HandShotgun.SetActive(true);
+            HandUzi.SetActive(false);
+            HandColt.SetActive(false);
         }
         else
         {

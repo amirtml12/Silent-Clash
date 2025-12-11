@@ -1,10 +1,11 @@
-
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public int MoveSpeed;
     public float climbSpeed = 3f;
@@ -13,30 +14,35 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
 
-    int MoveX;
+    float MoveX;
     float MoveY;
     private float scaleX = 1f;
 
     public bool isGround;
     public bool isNearLadder = false;
     public bool isClimbing = false;
+    bool isBusy = false;
+    public Slider slider;
 
     void Start()
     {
- 
+        
+        slider.minValue = 0;
+        slider.maxValue = 20;
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
     }
-   
+
 
     void Update()
     {
-        
+        if(!isLocalPlayer) return;
+
         joystick = FindObjectOfType<Joystick>();
-        MoveX = Mathf.RoundToInt(joystick.Horizontal);
-        MoveY = Mathf.RoundToInt(joystick.Vertical);
+        MoveX = joystick.Horizontal;
+        MoveY = joystick.Vertical;
 
 
         if (isNearLadder && Mathf.Abs(MoveY) > 0.3f)
@@ -65,23 +71,30 @@ public class PlayerController : MonoBehaviour
         {
             LadderMovement();
         }
+
+        if (slider.value <= 0)
+        {
+            Destroy(gameObject);
+            Debug.Log("Game Over");
+        }
     }
 
 
 
     void Move()
     {
+        if (isBusy) return;
         rb.gravityScale = 3f;
 
         if (isGround)
         {
-            if (MoveX > 0.3f)
+            if (MoveX > 0)
             {
                 rb.velocity = new Vector2(MoveSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
                 animator.SetInteger("PlayerMode", 1);
             }
-            else if (MoveX < -0.3f)
+            else if (MoveX < 0)
             {
                 rb.velocity = new Vector2(-MoveSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
@@ -97,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-  
+
     void StartClimbing()
     {
         isClimbing = true;
@@ -105,9 +118,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
     }
 
-    // ======================
-    //   حرکت روی نردبان
-    // ======================
     void LadderMovement()
     {
 
@@ -115,7 +125,7 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(MoveY) > 0.1f)
         {
             rb.velocity = new Vector2(0, MoveY * climbSpeed);
-            animator.SetInteger("PlayerMode", 2); // انیمیشن بالا رفتن
+            animator.SetInteger("PlayerMode", 2);
         }
 
         else if (Mathf.Abs(MoveY) < -0.1f)
@@ -127,9 +137,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // ======================
-    // خروج از حالت نردبان
-    // ======================
     void StopClimbing()
     {
         isClimbing = false;
@@ -137,9 +144,42 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // ======================
-    //    تریگر نردبان
-    // ======================
+    public void PickUp()
+    {
+
+        StartCoroutine(AfterPickUp());
+    }
+
+    IEnumerator AfterPickUp()
+    {
+        isBusy = true;
+        animator.SetInteger("PlayerMode", 4);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetInteger("PlayerMode", 0);
+        isBusy = false;
+    }
+
+
+
+
+    public void TakeDamage(int dmg)
+    {
+        slider.value -= dmg;
+
+        if (slider.value <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Game Over");
+        Destroy(gameObject);
+    }
+
+
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("ladder"))

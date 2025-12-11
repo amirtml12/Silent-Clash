@@ -1,63 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
-    Joystick joystick;
+    
     public GameObject Bullet;
     public Transform BulletPosition;
     public float bulletSpeed = 50f;
-    public GameObject player; 
-    float GunDirectionX;
-    float GunDirectionY;
+    public GameObject player;
 
-    float fireRate;          
-    float nextFireTime = 0f; 
+    float nextFireTime = 0f;
+    public float fireRate;
+
+    float x, y;
+    public string gun;
 
     void Start()
     {
         player = GetComponent<PlayerController>().gameObject;
-        SetFireRate();   
+
+
     }
 
     void Update()
     {
-        joystick = FindObjectOfType<Joystick>();
-        GunDirectionX = joystick.Horizontal;
-        GunDirectionY = joystick.Vertical;
-
         
-        if ((GunDirectionX != 0 || GunDirectionY != 0) && Time.time >= nextFireTime)
+        
+        SetFireRate();
+        if ( ShootingButton.instance.ShootingPressed && Time.time >= nextFireTime)
         {
             Shoot();
-            nextFireTime = Time.time + fireRate;  
+            nextFireTime = Time.time + fireRate;
         }
     }
 
-   
+    
     void SetFireRate()
     {
-        string gun = gameObject.transform.parent.name;
+        gun = transform.parent.name;
 
-        if (gun == "HandColt")
-            fireRate = 0.5f;         
+        if (gun == "ForhandColt")
+            fireRate = 1f;
 
-        else if (gun == "HandShotGun")
-            fireRate = 0.5f;         
+        else if (gun == "ForhandShotGun")
+            fireRate = 1f;
 
-        else if (gun == "HandUzi")
-            fireRate = 0.1f;        
+        else if (gun == "ForhandUzi")
+            fireRate = 0.5f;
     }
 
-
+  
     public void Shoot()
     {
         GameObject bullet = Instantiate(Bullet, BulletPosition.position, BulletPosition.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        float playerDirection = player.transform.localScale.x;
-        Vector2 direction = playerDirection > 0 ? BulletPosition.right : -BulletPosition.right;
-        rb.velocity = direction * bulletSpeed;
+
+        float dir = player.transform.localScale.x;
+        Vector2 shootDir = dir > 0 ? BulletPosition.right : -BulletPosition.right;
+
+        rb.velocity = shootDir * bulletSpeed;
 
         Destroy(bullet, 2f);
     }

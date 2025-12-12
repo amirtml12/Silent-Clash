@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5348528268079984345}
   - component: {fileID: 3003226410622249493}
   - component: {fileID: 4456512074078616410}
+  - component: {fileID: 1943925637892526765}
   m_Layer: 0
   m_Name: CanBePickedUpItem
   m_TagString: Untagged
@@ -178,6 +179,23 @@ CircleCollider2D:
   m_Offset: {x: -0.22102463, y: 0.20175783}
   serializedVersion: 2
   m_Radius: 4.6972165
+--- !u!114 &1943925637892526765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328251654194970178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 86909758
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &6696042861156007135
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +207,6 @@ GameObject:
   - component: {fileID: 853600769272840171}
   - component: {fileID: 4369873093372699554}
   - component: {fileID: 5429346481035360764}
-  - component: {fileID: 6331295289602942895}
   - component: {fileID: 8969215909270038259}
   m_Layer: 0
   m_Name: Colt
@@ -311,20 +328,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.56621, y: 5.3261857}
   m_EdgeRadius: 0
---- !u!114 &6331295289602942895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6696042861156007135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3d163d4148f3f4fadccfe1bae56264, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showOffTime: 0.1
-  nextShowOffTime: 2
 --- !u!114 &8969215909270038259
 MonoBehaviour:
   m_ObjectHideFlags: 0

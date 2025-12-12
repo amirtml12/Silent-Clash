@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Shooting : MonoBehaviour
 {
     
@@ -49,7 +50,7 @@ public class Shooting : MonoBehaviour
             fireRate = 0.5f;
     }
 
-  
+    
     public void Shoot()
     {
         GameObject bullet = Instantiate(Bullet, BulletPosition.position, BulletPosition.rotation);

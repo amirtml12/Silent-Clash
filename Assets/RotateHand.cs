@@ -14,6 +14,7 @@ public class HandAiming : MonoBehaviour
         float x = joystick.Horizontal;
         float y = joystick.Vertical;
 
+
         if (x == 0 && y == 0) return;
 
  

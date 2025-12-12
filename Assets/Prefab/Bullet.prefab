@@ -171,4 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933496b2c60ce4b408ef3520119ee203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerController: {fileID: 4438194645675748622, guid: 41e2ed600b7744841b997fd1d719688d, type: 3}
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0

@@ -72,14 +72,16 @@
 
 ## ✳️ ساختار پوشه‌ها (Project Folder Structure)
 Assets/
-├── Scripts/
-│ ├── Network/
-│ ├── Player/
-│ ├── UI/
-│ └── AI/
-├── Prefabs/
-├── Scenes/
-└── UI/
+│── Scripts/
+│   ├── Network/
+│   ├── Player/
+│   ├── Shooting/
+│   ├── Weapons/
+│   ├── UI/
+│   └── AI/
+│── Prefabs/
+│── Scenes/
+│── UI/
 
 ## ✳️ توضیح ماژول‌ها (Modules Description)
 -  مدیریت اتصال‌ها، ساخت پلیر، تغییر صحنه  **CustomNetworkManager** →
@@ -87,13 +89,45 @@ Assets/
 -  ذخیره و همگام‌سازی نام بازیکن  **PlayerData** →
 -  بروزرسانی لیست بازیکنان در لابی  **LobbyManager** →
 -  رفتار شخصیت‌های کنترل‌شده توسط AI  **AIController** →
+سیستم شبکه (Network System)
+سیستم لابی
 
-## ✳️  شبکه (Network API)
--`CmdSetPlayerName(string name)`  
--`ServerChangeScene("Game")`  
-- `SyncVar playerName`  
+اتصال هاست با StartHost
 
+اتصال کلاینت با StartClient(IP)
+برای نام بازیکن SyncVar
+بروزرسانی خودکار لیست بازیکنان
+انتقال همه به صحنه Game
 
+## ✳️ سیستم اسلحه‌ها (Weapon System)
+
+هر سلاح دارای:
+
+Parent → Prefab
+
+Trigger Collider
+
+Script: PickUpItem
+
+Network Destroy پس از برداشتن
+
+پس از برداشتن:
+
+تغییر Sprite بازیکن
+
+فعال شدن دست مناسب (HandColt/HandUzi/HandShotgun)
+
+فعال شدن ShootingButton
+
+سیستم تیر  
+
+شلیک فقط توسط بازیکن صاحب سلاح
+
+تولید گلوله فقط در سرور
+
+حرکت Bullet توسط Rigidbody2D
+
+تخریب خودکار بعد از ۲ ثانیه
 # 5️⃣ مستندات تست (Test Documentation)
 
 ## ✳️ موارد تست (Test Cases)

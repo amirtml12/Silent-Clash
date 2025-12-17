@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 namespace SilentClash
 
 {
@@ -27,6 +28,7 @@ namespace SilentClash
 
         public void PlayWithAI()
         {
+            SceneManager.LoadScene("Ai");
         }
 
         public void CreateGroup()

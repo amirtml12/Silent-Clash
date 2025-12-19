@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5348528268079984345}
   - component: {fileID: 3003226410622249493}
   - component: {fileID: 4456512074078616410}
-  - component: {fileID: 1943925637892526765}
   m_Layer: 0
   m_Name: CanBePickedUpItem
   m_TagString: Untagged
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -906327567
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 96c5afc61b201104387bf51f40d22c84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -179,23 +178,6 @@ CircleCollider2D:
   m_Offset: {x: -0.22102463, y: 0.20175783}
   serializedVersion: 2
   m_Radius: 4.6972165
---- !u!114 &1943925637892526765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328251654194970178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 86909758
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!1 &6696042861156007135
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ TagManager:
   - ladder
   - MoveJoy
   - AimJoy
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -65,4 +66,7 @@ TagManager:
     locked: 0
   - name: bullet
     uniqueID: 3388639729
+    locked: 0
+  - name: SceneFinilizer
+    uniqueID: 236416953
     locked: 0

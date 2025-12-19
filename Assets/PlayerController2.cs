@@ -37,6 +37,7 @@ public class PlayerController2 : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
 
     }
 
@@ -178,7 +179,7 @@ public class PlayerController2 : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Game Over");
+        SceneReloader.instance.gameover =true;
         Destroy(gameObject);
     }
 

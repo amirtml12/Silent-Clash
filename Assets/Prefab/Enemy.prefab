@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3952065908520338395}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ Animator:
   m_GameObject: {fileID: 61155104082330755}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fb0fd44f5d26cb74f87d1c8056ec6bf1, type: 2}
+  m_Controller: {fileID: 9100000, guid: b559aba5c0a99444290361da27dae4ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -196,11 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e72379300eb06144a559619f379683f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  detectRange: 10
-  stopRange: 2
-  moveSpeed: 3
+  player: {fileID: 7213922965082794990, guid: 2a4f54b1644167b478826aa9617c139a, type: 3}
+  slider: {fileID: 4774170157292765018}
+  detectRange: 64.82
+  stopRange: 14.28
+  DirectRange: 0.94
+  moveSpeed: 4.36
   distance: 0
   IsDead: 0
 --- !u!1 &299958716683451895
@@ -530,7 +531,7 @@ MonoBehaviour:
   BulletPosition: {fileID: 4749444198075832939}
   bulletSpeed: 50
   Enemy: {fileID: 61155104082330755}
-  fireRate: 0
+  fireRate: 2
   gun: 
 --- !u!1 &4319488367714417598
 GameObject:

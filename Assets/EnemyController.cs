@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     [Header("Settings")]
     public float detectRange = 10f;
     public float stopRange = 2f;
+    public float DirectRange;
     public float moveSpeed = 10f;
     public float distance = 0;
     public bool IsDead = false;
@@ -24,12 +25,15 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
 
     }
 
@@ -58,6 +62,17 @@ public class EnemyController : MonoBehaviour
             StopMoving();
             EnemyShooting.instance.Shooting();
         }
+
+        if (distance <= DirectRange) localscale();
+
+
+    }
+    void localscale()
+    {
+        Vector2 directionenemy = (player.position - transform.position).normalized;
+        if (directionenemy.x < 0 && !isFacingRight) Flip();
+
+        else if (directionenemy.x > 0 && isFacingRight) Flip();
     }
 
     void MoveTowardPlayer()
@@ -65,13 +80,6 @@ public class EnemyController : MonoBehaviour
         if (IsDead) return;
         Vector2 direction = (player.position - transform.position).normalized;
         rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
-
-
-        if (direction.x < 0 && !isFacingRight)
-            Flip();
-        else if (direction.x > 0 && isFacingRight)
-            Flip();
-
 
         if (animator != null)
             animator.SetInteger("PlayerMode", 1);
@@ -115,5 +123,8 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stopRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, DirectRange);
+
     }
 }
